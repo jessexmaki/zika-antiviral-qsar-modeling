@@ -22,7 +22,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors, Lipinski
 
 # Load the dataset
-df = pd.read_csv('Data/aromatase_03_bioactivity_data_curated.csv')
+df = pd.read_csv('Data/zika_03_bioactivity_data_curated.csv')
 
 # Remove the canonical_smiles column
 df_no_smiles = df.drop(columns='canonical_smiles')
@@ -97,11 +97,11 @@ df_norm = norm_value(df_combined)
 df_final = pIC50(df_norm)
 
 # Save the cleaned data
-df_final.to_csv('Data/aromatase_04_bioactivity_data_3class_pIC50.csv')
+df_final.to_csv('Data/zika_04_bioactivity_data_3class_pIC50.csv')
 
 # Filter out intermediate class and save the 2-class dataset
 df_2class = df_final[df_final['class'] != 'intermediate']
-df_2class.to_csv('Data/aromatase_05_bioactivity_data_2class_pIC50.csv')
+df_2class.to_csv('Data/zika_05_bioactivity_data_2class_pIC50.csv')
 
 # Importing necessary libraries
 import seaborn as sns

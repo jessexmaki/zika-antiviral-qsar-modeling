@@ -7,7 +7,7 @@
 import pandas as pd
 
 # Read the bioactivity data from the CSV file into a dataframe.
-df3 = pd.read_csv('Data/aromatase_04_bioactivity_data_3class_pIC50.csv')
+df3 = pd.read_csv('Data/zika_04_bioactivity_data_3class_pIC50.csv')
 
 # Select the 'canonical_smiles' and 'molecule_chembl_id' columns from the dataframe.
 selection = ['canonical_smiles','molecule_chembl_id']
@@ -29,4 +29,4 @@ dataset3 = pd.concat([df3_X,df3_Y], axis=1)
 dataset3
 
 # Save the combined data to a new CSV file.
-dataset3.to_csv('Data/aromatase_06_bioactivity_data_3class_pIC50_pubchem_fp.csv', index=False)
+dataset3.to_csv('Data/zika_06_bioactivity_data_3class_pIC50_pubchem_fp.csv', index=False)

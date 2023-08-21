@@ -1,2 +1,2 @@
 ,Descriptor,Statistics,p,alpha,Interpretation
-0,LogP,252241.5,0.8437039197376394,0.05,Same distribution (fail to reject H0)
+0,LogP,1817.0,0.00205760572679952,0.05,Different distribution (reject H0)

@@ -14,10 +14,10 @@ selection = ['molecule_chembl_id', 'canonical_smiles', 'standard_value', 'name']
 df3 = df2_nr[selection]
 
 # Save the preprocessed data to a new CSV file
-df3.to_csv('Data/aromatase_02_bioactivity_data_preprocessed.csv', index=False)
+df3.to_csv('Data/zika_02_bioactivity_data_preprocessed.csv', index=False)
 
 # Reload the preprocessed data (Note: this step might be unnecessary if you continue using df3 directly)
-df4 = pd.read_csv('Data/aromatase_02_bioactivity_data_preprocessed.csv')
+df4 = pd.read_csv('Data/zika_02_bioactivity_data_preprocessed.csv')
 
 # Determine the bioactivity class based on standard_value
 def classify_bioactivity(value):
@@ -35,4 +35,4 @@ df5 = df4.copy()
 df5['class'] = bioactivity_class
 
 # Save the curated data to a new CSV file
-df5.to_csv('Data/aromatase_03_bioactivity_data_curated.csv', index=False)
+df5.to_csv('Data/zika_03_bioactivity_data_curated.csv', index=False)
