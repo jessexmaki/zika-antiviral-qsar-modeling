@@ -11,5 +11,6 @@ The trained regression model can be applied to new compounds by taking their SMI
 Overall, this workflow demonstrates a typical QSAR modeling approach leveraging public bioactivity data, physicochemical properties, molecular descriptors, machine learning algorithms, and rigorous validation to derive predictive models for accelerated antiviral drug discovery. The code encapsulates data cleaning, analysis, model development, and application to new compounds.
 
 ------------
-***LINKS***
+***LINKS***:
+
 PaDel Software: https://github.com/dataprofessor/bioinformatics/
