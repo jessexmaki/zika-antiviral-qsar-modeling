@@ -10,6 +10,13 @@ The trained regression model can be applied to new compounds by taking their SMI
 
 Overall, this workflow demonstrates a typical QSAR modeling approach leveraging public bioactivity data, physicochemical properties, molecular descriptors, machine learning algorithms, and rigorous validation to derive predictive models for accelerated antiviral drug discovery. The code encapsulates data cleaning, analysis, model development, and application to new compounds.
 
+----- 
+**Process for using `testing.py`:**
+* Update the information in the `Testing/input_smiles.txt` for the chemical structures you want to test
+* Unzip the PaDel software `padel.zip`
+* Run `testing.py` 
+
+
 ------------
 ***LINKS***:
 
