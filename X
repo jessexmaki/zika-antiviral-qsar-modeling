@@ -1,0 +1,76 @@
+Sub ApplyReleaseKinetics()
+    Dim wsMetal As Worksheet
+    Dim wsGeneral As Worksheet
+    Dim lastRow As Long
+    Dim i As Long
+    Dim initialAmount As Double
+    Dim combinedResult As String
+    Dim day1Percent As Double
+    Dim day2Percent As Double
+    Dim day3Percent As Double
+    Dim day4Percent As Double
+    Dim day5Percent As Double
+    Dim cumulativePercent As Double
+    
+    ' Set the worksheets
+    Set wsMetal = ThisWorkbook.Sheets("Metal")
+    Set wsGeneral = ThisWorkbook.Sheets("General")
+    
+    ' Check if cell D9 in General sheet has "Known release kinetics (historical)"
+    If wsGeneral.Range("D9").Value <> "Known release kinetics (historical)" Then
+        MsgBox "Known release kinetics (historical) is not set in General!D9", vbExclamation
+        Exit Sub
+    End If
+    
+    ' Get the percentages from the "General" sheet
+    day1Percent = wsGeneral.Range("K2").Value
+    day2Percent = wsGeneral.Range("K3").Value
+    day3Percent = wsGeneral.Range("K4").Value
+    day4Percent = wsGeneral.Range("K5").Value
+    day5Percent = wsGeneral.Range("K6").Value
+    
+    ' Get the last row with data in the "Metal" sheet
+    lastRow = wsMetal.Cells(wsMetal.Rows.Count, "D").End(xlUp).Row
+    
+    ' Loop through each row of data
+    For i = 2 To lastRow
+        If wsMetal.Cells(i, 3).Value = "Known release kinetics (historical)" Then
+            initialAmount = wsMetal.Cells(i, 4).Value ' Assuming the amount is in column D
+            cumulativePercent = 0
+            combinedResult = ""
+            
+            ' Calculate for Day 1
+            cumulativePercent = day1Percent
+            combinedResult = "Day 1: " & Format(initialAmount * day1Percent, "0.00") & " µg"
+            
+            ' Calculate for Day 2
+            If cumulativePercent < 1 Then
+                cumulativePercent = cumulativePercent + day2Percent
+                combinedResult = combinedResult & ", Day 2: " & Format(initialAmount * day2Percent, "0.00") & " µg"
+            End If
+            
+            ' Calculate for Day 3
+            If cumulativePercent < 1 Then
+                cumulativePercent = cumulativePercent + day3Percent
+                combinedResult = combinedResult & ", Day 3: " & Format(initialAmount * day3Percent, "0.00") & " µg"
+            End If
+            
+            ' Calculate for Day 4
+            If cumulativePercent < 1 Then
+                cumulativePercent = cumulativePercent + day4Percent
+                combinedResult = combinedResult & ", Day 4: " & Format(initialAmount * day4Percent, "0.00") & " µg"
+            End If
+            
+            ' Calculate for Day 5
+            If cumulativePercent < 1 Then
+                cumulativePercent = cumulativePercent + day5Percent
+                combinedResult = combinedResult & ", Day 5: " & Format(initialAmount * day5Percent, "0.00") & " µg"
+            End If
+            
+            ' Output the combined result in column L
+            wsMetal.Cells(i, 12).Value = combinedResult
+        End If
+    Next i
+    
+    MsgBox "Release kinetics applied and results saved in column L of the 'Metal' sheet.", vbInformation
+End Sub
